@@ -1,0 +1,76 @@
+## ##########################
+## Visual Studio & MSBuild
+## ##########################
+
+# Pastas de saída (binários e objetos)
+[Bb]in/
+[Ob]j/
+out/
+
+# Arquivos de log do MSBuild
+*.log
+*.binarylog
+
+# Cache do Roslyn e ferramentas de análise
+.roslyn/
+.analyzerdata/
+
+## ##########################
+## Visual Studio Code
+## ##########################
+
+.vscode/
+# Se você quiser manter as configurações de tarefa/lançamento, comente as linhas abaixo:
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
+
+## ##########################
+## Segredos e Configurações Locais
+## ##########################
+
+# Arquivos de segredos do .NET (User Secrets)
+# Geralmente ficam no perfil do usuário, mas se estiverem no projeto:
+appsettings.Development.json
+appsettings.Local.json
+
+# Arquivos de ambiente e tokens
+.env
+*.user
+*.userosscache
+*.sln.docstates
+
+## ##########################
+## Pacotes e Ferramentas
+## ##########################
+
+# Cache do NuGet
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.assets.json
+
+# Ferramentas HTTP (arquivos .http do VS 2022 / VS Code)
+*.http
+
+# Publicação (Publish)
+publish/
+
+## ##########################
+## Sistema Operacional
+## ##########################
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+## ##########################
+## Testes e Cobertura
+## ##########################
+
+TestResults/
+*.opencover.xml
+edge/
