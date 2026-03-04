@@ -7,5 +7,6 @@ namespace EmailSignatureApp.Models
         public string WebsiteDisplay { get; set; } = string.Empty;
         public string InstitutionName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
     }
 }

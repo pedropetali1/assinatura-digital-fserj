@@ -38,12 +38,5 @@ namespace EmailSignatureApp.Controllers
                 SignatureHtml = _signatureService.GenerateHtml(user)
             });
         }
-
-        public IActionResult Diagnostico()
-        {
-            var username = User.Identity?.Name ?? "pedro.petali"; // fallback para dev
-            var attrs = _adService.GetAllAttributes(username);
-            return Json(attrs);
-        }
     }
 }

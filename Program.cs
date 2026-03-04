@@ -1,14 +1,13 @@
 using EmailSignatureApp.Models;
 using EmailSignatureApp.Services;
-using Microsoft.AspNetCore.Authentication.Negotiate;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-// Windows Authentication
-builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-    .AddNegotiate();
+// No IIS, o Windows Authentication é gerenciado pelo próprio servidor.
+// Não usamos AddNegotiate() aqui — apenas habilitamos IISIntegration.
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Server.IISIntegration.IISDefaults.AuthenticationScheme);
 
 builder.Services.AddAuthorization(options =>
 {
