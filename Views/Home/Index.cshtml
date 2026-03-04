@@ -88,26 +88,27 @@
     <script>
         document.getElementById('btn-copy')?.addEventListener('click', async () => {
             const preview = document.getElementById('signature-preview');
-            const html = preview.innerHTML;
-            const text = preview.innerText;
 
             try {
+                // Tenta Clipboard API moderna (Chrome, Edge modernos)
                 await navigator.clipboard.write([
                     new ClipboardItem({
-                        'text/html': new Blob([html], { type: 'text/html' }),
-                        'text/plain': new Blob([text], { type: 'text/plain' })
+                        'text/html': new Blob([preview.innerHTML], { type: 'text/html' }),
+                        'text/plain': new Blob([preview.innerText], { type: 'text/plain' })
                     })
                 ]);
-                showFeedback();
             } catch {
-                const ta = document.createElement('textarea');
-                ta.value = html;
-                document.body.appendChild(ta);
-                ta.select();
+                // Fallback: seleciona o elemento HTML renderizado e copia
+                const range = document.createRange();
+                range.selectNode(preview);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
                 document.execCommand('copy');
-                document.body.removeChild(ta);
-                showFeedback();
+                selection.removeAllRanges();
             }
+
+            showFeedback();
         });
 
         function showFeedback() {
